@@ -1,0 +1,21 @@
+{
+  "presets": [
+    "es2015",
+    "stage-0"
+  ],
+  "plugins": [
+    ["module-resolver", {
+      "root": ["./src"],
+      "alias": {
+        "components": "./components",
+        "utils":      "./utils",
+        "config":     "./utils/config",
+        "enums":      "./utils/enums",
+        "services":   "./services",
+        "models":     "./models",
+        "routes":     "./routes",
+        "themes":     "./themes"
+      }
+    }]
+  ]
+}
