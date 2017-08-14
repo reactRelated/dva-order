@@ -19,6 +19,7 @@
     "dva": "^1.2.1",
     "dva-loading": "^0.2.1",
     "less-vars-to-js": "^1.2.0",
+    "mockjs": "^1.0.1-beta3",
     "nprogress": "^0.2.0",
     "path-to-regexp": "^1.7.0",
     "qs": "^6.5.0",

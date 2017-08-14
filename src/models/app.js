@@ -21,7 +21,7 @@ export default {
   },
   subscriptions: {
 
-   /* setup ({ dispatch }) {
+    setup ({ dispatch }) {
       dispatch({ type: 'query' })
       let tid
       window.onresize = () => {
@@ -30,12 +30,12 @@ export default {
           dispatch({ type: 'changeNavbar' })
         }, 300)
       }
-    },*/
+    },
 
   },
   effects: {
 
-  /*  * query ({
+    * query ({
       payload,
     }, { call, put }) {
       const { success, user } = yield call(query, payload)
@@ -89,7 +89,7 @@ export default {
       if (isNavbar !== app.isNavbar) {
         yield put({ type: 'handleNavbar', payload: isNavbar })
       }
-    },*/
+    },
 
   },
   reducers: {
