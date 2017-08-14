@@ -11,7 +11,7 @@ import '../themes/index.less'
 import './app.less'
 import Error from './error'
 
-// const { prefix, openPages } = config
+const { prefix, openPages } = config
 
 const { Header, Bread, Footer, Sider, styles } = Layout
 let lastHref
@@ -72,12 +72,12 @@ const App = ({ children, dispatch, app, loading, location }) => {
   const breadProps = {
     menu,
   }
-  /*if (openPages && openPages.includes(pathname)) {
+  if (openPages && openPages.includes(pathname)) {
     return (<div>
       <Loader spinning={loading.effects['app/query']} />
       {children}
     </div>)
-  }*/
+  }
     return (
         <div>
             <Helmet>

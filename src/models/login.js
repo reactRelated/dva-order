@@ -1,6 +1,6 @@
 import { routerRedux } from 'dva/router'
-import { queryURL } from 'utils'
-import { login } from 'services/login'
+import { queryURL } from '../utils'
+import { login } from '../services/login'
 
 export default {
   namespace: 'login',

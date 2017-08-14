@@ -22,6 +22,15 @@ const Routers = function ({ history, app }) {
             },
             childRoutes: [
                 {
+                  path: 'login',
+                  getComponent (nextState, cb) {
+                    require.ensure([], (require) => {
+                      registerModel(app, require('./models/login'))
+                      cb(null, require('./routes/login/'))
+                    }, 'login')
+                  },
+                },
+                {
                     path: 'dashboard',
                     getComponent (nextState, cb) {
                         require.ensure([], (require) => {
