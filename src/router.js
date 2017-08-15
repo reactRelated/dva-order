@@ -38,6 +38,14 @@ const Routers = function ({ history, app }) {
                             cb(null, require('./routes/dashboard/'))
                         }, 'dashboard')
                     },
+                },
+                {
+                  path: '*',
+                  getComponent (nextState, cb) {
+                    require.ensure([], (require) => {
+                      cb(null, require('./routes/error/'))
+                    }, 'error')
+                  },
                 }
             ],
         },

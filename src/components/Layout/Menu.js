@@ -7,7 +7,7 @@ import { arrayToTree, queryArray } from '../../utils'
 import pathToRegexp from 'path-to-regexp'
 
 const Menus = ({ siderFold, darkTheme, handleClickNavMenu, navOpenKeys, changeOpenKeys, menu }) => {
-  /*// 生成树状
+  // 生成树状
   const menuTree = arrayToTree(menu.filter(_ => _.mpid !== '-1'), 'id', 'mpid')
   const levelMap = {}
 
@@ -101,36 +101,28 @@ const Menus = ({ siderFold, darkTheme, handleClickNavMenu, navOpenKeys, changeOp
   }
   if (currentMenu) {
     defaultSelectedKeys = getPathArray(menu, currentMenu, 'mpid', 'id')
-  }*/
+  }
 
   return (
     <Menu
+      {...menuProps}
       mode={siderFold ? 'vertical' : 'inline'}
       theme={darkTheme ? 'dark' : 'light'}
       onClick={handleClickNavMenu}
+      defaultSelectedKeys={defaultSelectedKeys}
     >
-      <Menu.SubMenu key="sub1" title={<span><Icon type="mail" /><span>Navigation One</span></span>}>
-        <Menu.ItemGroup key="g1" title="Item 1">
-          <Menu.Item key="1">Option 1</Menu.Item>
-          <Menu.Item key="2">Option 2</Menu.Item>
-        </Menu.ItemGroup>
-        <Menu.ItemGroup key="g2" title="Item 2">
-          <Menu.Item key="3">Option 3</Menu.Item>
-          <Menu.Item key="4">Option 4</Menu.Item>
-        </Menu.ItemGroup>
-      </Menu.SubMenu>
-
+      {menuItems}
     </Menu>
   )
 }
 
-/*Menus.propTypes = {
+Menus.propTypes = {
   menu: PropTypes.array,
   siderFold: PropTypes.bool,
   darkTheme: PropTypes.bool,
   handleClickNavMenu: PropTypes.func,
   navOpenKeys: PropTypes.array,
   changeOpenKeys: PropTypes.func,
-}*/
+}
 
 export default Menus

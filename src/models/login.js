@@ -15,7 +15,7 @@ export default {
       yield put({ type: 'showLoginLoading' })
       const data = yield call(login, payload)
       yield put({ type: 'hideLoginLoading' })
-      if (data.success) {
+      if (data.code > 0) {
         const from = queryURL('from')
         yield put({ type: 'app/query' })
         if (from) {

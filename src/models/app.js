@@ -4,9 +4,9 @@
 import { routerRedux } from 'dva/router'
 import { parse } from 'qs'
 import config from '../utils/config'
-// import { EnumRoleType } from 'utils/enums'
+import { EnumRoleType } from '../utils/enums'
 import { query, logout } from '../services/app'
-// import * as menusService from 'services/menus'
+import * as menusService from '../services/menus'
 
 const { prefix } = config
 
@@ -17,10 +17,21 @@ export default {
     permissions: {
       visit: [],
     },
-
+    menu: [
+      {
+        id: 1,
+        icon: 'laptop',
+        name: 'Dashboard',
+        router: '/dashboard',
+      },
+    ],
+    menuPopoverVisible: false,
+    siderFold: window.localStorage.getItem(`${prefix}siderFold`) === 'true',
+    darkTheme: window.localStorage.getItem(`${prefix}darkTheme`) === 'true',
+    isNavbar: document.body.clientWidth < 769,
+    navOpenKeys: JSON.parse(window.localStorage.getItem(`${prefix}navOpenKeys`)) || [],
   },
   subscriptions: {
-
     setup ({ dispatch }) {
       dispatch({ type: 'query' })
       let tid
@@ -38,8 +49,11 @@ export default {
     * query ({
       payload,
     }, { call, put }) {
-      const { success, user } = yield call(query, payload)
-      if (success && user) {
+      //请求查询 用户数据
+      const { code, user } = yield call(query, payload)
+      //请求成功
+      if (code > 0 && user) {
+        //请求菜单
         const { list } = yield call(menusService.query)
         const { permissions } = user
         let menu = list
@@ -60,7 +74,7 @@ export default {
           payload: {
             user,
             permissions,
-            menu,
+            menu
           },
         })
         if (location.pathname === '/login') {
@@ -94,6 +108,8 @@ export default {
   },
   reducers: {
     updateState (state, { payload }) {
+      console.log(state)
+      console.log(payload)
       return {
         ...state,
         ...payload,
@@ -131,6 +147,7 @@ export default {
     },
 
     handleNavOpenKeys (state, { payload: navOpenKeys }) {
+      console.log(state)
       return {
         ...state,
         ...navOpenKeys,

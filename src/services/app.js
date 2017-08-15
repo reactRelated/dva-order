@@ -4,7 +4,6 @@ const { api } = config
 const { user, userLogout, userLogin } = api
 
 export async function login (params) {
-  console.log(params)
   return request({
     url: userLogin,
     method: 'post',

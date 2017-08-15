@@ -17,15 +17,29 @@ const { Header, Bread, Footer, Sider, styles } = Layout
 let lastHref
 
 const App = ({ children, dispatch, app, loading, location }) => {
-    console.log(app)
+  /**
+   * user       用户状态
+   * siderFold
+   * darkTheme
+   * isNavbar
+   * menuPopoverVisible
+   * navOpenKeys
+   * menu
+   * permissions
+   */
+
   const { user, siderFold, darkTheme, isNavbar, menuPopoverVisible, navOpenKeys, menu, permissions } = app
   let { pathname } = location
+  // startsWith 表示参数字符串是否在源字符串的头部
   pathname = pathname.startsWith('/') ? pathname : `/${pathname}`
   const { iconFontJS, iconFontCSS, logo } = config
- /* const current = menu.filter(item => pathToRegexp(item.route || '').exec(pathname))
-  const hasPermission = current.length ? permissions.visit.includes(current[0].id) : false*/
+  /*pathToRegexp 将路径转换成  Reg.exec() 匹配路由获得当前的 菜单*/
+  const current = menu.filter(item =>pathToRegexp(item.route || '').exec(pathname))
+  /* visit为菜单权限id，includes判断 当前current[0].id是否 存在于visit（当前菜单权限），检查权限 */
+  const hasPermission = current.length ? permissions.visit.includes(current[0].id) : false
   const href = window.location.href
 
+  //loading 进度条
   if (lastHref !== href) {
     NProgress.start()
     if (!loading.global) {
@@ -69,6 +83,7 @@ const App = ({ children, dispatch, app, loading, location }) => {
     },
   }
 
+  /*面包屑*/
   const breadProps = {
     menu,
   }
@@ -93,11 +108,10 @@ const App = ({ children, dispatch, app, loading, location }) => {
                     </aside> : ''}
                 <div className={styles.main}>
                     <Header {...headerProps} />
-                    {/*<Bread {...breadProps} />*/}
+                    <Bread {...breadProps} />
                     <div className={styles.container}>
                         <div className={styles.content}>
-                            {/*{hasPermission ? children : <Error />}*/}
-                            {children}
+                            {hasPermission ? children : <Error />}
                         </div>
                     </div>
                     <Footer />
