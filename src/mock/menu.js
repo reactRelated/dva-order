@@ -5,7 +5,7 @@ let database = [
   {
     id: '1',
     icon: 'laptop',
-    name: '主面板',
+    name: '数据集',
     route: '/dashboard',
   },
   {
