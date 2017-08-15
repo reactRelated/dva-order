@@ -17,18 +17,10 @@ const { Header, Bread, Footer, Sider, styles } = Layout
 let lastHref
 
 const App = ({ children, dispatch, app, loading, location }) => {
-  /**
-   * user       用户状态
-   * siderFold
-   * darkTheme
-   * isNavbar
-   * menuPopoverVisible
-   * navOpenKeys
-   * menu
-   * permissions
-   */
+
 
   const { user, siderFold, darkTheme, isNavbar, menuPopoverVisible, navOpenKeys, menu, permissions } = app
+  console.log(siderFold)
   let { pathname } = location
   // startsWith 表示参数字符串是否在源字符串的头部
   pathname = pathname.startsWith('/') ? pathname : `/${pathname}`
@@ -70,6 +62,7 @@ const App = ({ children, dispatch, app, loading, location }) => {
   }
 
   const siderProps = {
+    isNavbar,
     menu,
     siderFold,
     darkTheme,
@@ -93,6 +86,7 @@ const App = ({ children, dispatch, app, loading, location }) => {
       {children}
     </div>)
   }
+
     return (
         <div>
             <Helmet>
@@ -102,10 +96,10 @@ const App = ({ children, dispatch, app, loading, location }) => {
                 {iconFontJS && <script src={iconFontJS} />}
                 {iconFontCSS && <link rel="stylesheet" href={iconFontCSS} />}
             </Helmet>
-            <div className={classnames(styles.layout, { [styles.fold]: isNavbar ? false : siderFold }, { [styles.withnavbar]: isNavbar })}>
-                {!isNavbar ? <aside className={classnames(styles.sider, { [styles.light]: !darkTheme })}>
+            <div className={classnames(styles.layout, { [styles.fold]: siderFold }, { [styles.withnavbar]: isNavbar })}>
+               <aside className={classnames(styles.sider, { [styles.light]: !darkTheme })}>
                         <Sider {...siderProps} />
-                    </aside> : ''}
+                    </aside>
                 <div className={styles.main}>
                     <Header {...headerProps} />
                     <Bread {...breadProps} />

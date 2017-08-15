@@ -8,9 +8,22 @@
     .main {
       margin-left: 0;
     }
+    .sider {
+      display: none;
+    }
+    &.fold{
+      .main {
+        margin-left:244px;
+        width: 100%;
+      }
+      .sider {
+        display: block;
+        width: 244px;
+      }
+    }
   }
 
-  &.fold {
+  &.fold  {
     .sider {
       width: 42px;
 
@@ -60,6 +73,7 @@
     }
   }
 
+/*--*/
   .sider {
     width: 224px;
     background: #3e3e3e;

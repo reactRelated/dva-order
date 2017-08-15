@@ -10,8 +10,20 @@ import * as menusService from '../services/menus'
 
 const { prefix } = config
 
+
 export default {
   namespace: 'app',
+  /**
+   * 初始化数据源
+   * user        用户状态
+   * siderFold   true  [localStorage] 右侧菜单是否收起
+   * darkTheme   true  [localStorage] 右侧面板主題
+   * isNavbar    如果 document.body.clientWidth < 769
+   * menuPopoverVisible
+   * navOpenKeys
+   * menu
+   * permissions
+   */
   state: {
     user: {},
     permissions: {

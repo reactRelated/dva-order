@@ -5,8 +5,9 @@ import { config } from '../../utils'
 import styles from './Layout.less'
 import Menus from './Menu'
 
-const Sider = ({ siderFold, darkTheme, location, changeTheme, navOpenKeys, changeOpenKeys, menu }) => {
+const Sider = ({ isNavbar,siderFold, darkTheme, location, changeTheme, navOpenKeys, changeOpenKeys, menu }) => {
   const menusProps = {
+    isNavbar,
     menu,
     siderFold,
     darkTheme,
@@ -18,10 +19,10 @@ const Sider = ({ siderFold, darkTheme, location, changeTheme, navOpenKeys, chang
     <div>
       <div className={styles.logo}>
         <img alt={'logo'} src={config.logo} />
-        {siderFold ? '' : <span>{config.name}</span>}
+        {!isNavbar && siderFold ? '' : <span>{config.name}</span>}
       </div>
       <Menus {...menusProps} />
-      {!siderFold ? <div className={styles.switchtheme}>
+      {!isNavbar && !siderFold ? <div className={styles.switchtheme}>
         <span><Icon type="bulb" />Switch Theme</span>
         <Switch onChange={changeTheme} defaultChecked={darkTheme} checkedChildren="Dark" unCheckedChildren="Light" />
       </div> : ''}
