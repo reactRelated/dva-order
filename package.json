@@ -1,5 +1,7 @@
 {
   "private": true,
+  "name": "dva-order",
+  "version": "0.0.1",
   "scripts": {
     "start": "roadhog server",
     "build": "roadhog build",
@@ -9,6 +11,7 @@
   "engines": {
     "install-node": "6.9.2"
   },
+  "pre-commit": ["lint"],
   "dependencies": {
     "antd": "^2.12.5",
     "axios": "^0.16.2",
