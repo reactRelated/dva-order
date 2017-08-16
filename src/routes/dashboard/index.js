@@ -4,8 +4,10 @@ import { connect } from 'dva'
 import { Row, Col, Card } from 'antd'
 import { color } from '../../utils'
 import { Loader } from '../../components'
-// import { NumberCard, Quote, Sales, Weather, RecentSales, Comments, Completed, Browser, Cpu, User } from './components'
+import {  User } from './components'
 import styles from './index.less'
+import createG2 from 'g2-react';
+import { Stat } from 'g2';
 
 const bodyStyle = {
   bodyStyle: {
@@ -15,26 +17,40 @@ const bodyStyle = {
 }
 
 function Dashboard ({ dashboard, loading }) {
-  // const { weather, sales, quote, numbers, recentSales, comments, completed, browser, cpu, user } = dashboard
+  const { area,user } = dashboard
  /* const numberCards = numbers.map((item, key) => (<Col key={key} lg={6} md={12}>
     <NumberCard {...item} />
   </Col>))*/
-
+  const Chart = createG2(chart => {
+    chart.col('世界', {
+      type: 'linear',
+      tickInterval: 5
+    });
+    chart.areaStack().position('year*value').color('country');
+    chart.render();
+  });
   return (
     <div>
       <Loader spinning={loading.models.dashboard} />
       <Row gutter={24}>
         {/*{numberCards}*/}
-        <Col lg={18} md={24}>
-          <Card bordered={false}
-                bodyStyle={{
-                  padding: '24px 36px 24px 0',
-                }}
-          >
-            mrchen
+        <Col lg={16} md={24}>
+          <Card
+            title="数据统计"
+            bordered={false} >
+            <Chart
+              data={area.data}
+              width={area.width}
+              height={area.height}
+              forceFit={area.forceFit} />
           </Card>
         </Col>
-
+        <Col lg={8} md={24}>
+          <Card
+            bordered={false} >
+            <User {...user}   bodyStyle={{ ...bodyStyle.bodyStyle, padding: 0 }}/>
+          </Card>
+        </Col>
       </Row>
     </div>
   )
