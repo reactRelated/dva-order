@@ -5,7 +5,7 @@ let database = [
   {
     id: '1',
     icon: 'laptop',
-    name: '数据集',
+    name: '总览仪表',
     route: '/dashboard',
   },
   {
@@ -16,33 +16,26 @@ let database = [
     route: '/user',
   },
   {
-    id: '7',
-    bpid: '1',
-    name: 'Posts',
-    icon: 'shopping-cart',
-    route: '/post',
-  },
-  {
     id: '21',
     mpid: '-1',
     bpid: '2',
     name: 'User Detail',
     route: '/user/:id',
   },
-  {
+/*  {
     id: '3',
     bpid: '1',
-    name: 'Request',
+    name: '数据',
     icon: 'api',
     route: '/request',
-  },
+  },*/
   {
     id: '4',
     bpid: '1',
     name: 'UI Element',
     icon: 'camera-o',
   },
-  {
+/*  {
     id: '41',
     bpid: '4',
     mpid: '4',
@@ -89,11 +82,11 @@ let database = [
     name: 'layer (Function)',
     icon: 'credit-card',
     route: '/UIElement/layer',
-  },
+  },*/
   {
     id: '5',
     bpid: '1',
-    name: 'Recharts',
+    name: 'AntV',
     icon: 'code-o',
   },
   {

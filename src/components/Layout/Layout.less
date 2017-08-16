@@ -1,24 +1,31 @@
 @import "../../themes/vars";
-
+/*背景*/
+.rootBg{
+  background-color: #3e3e3e;
+}
+.rootBg.light{
+  background-color: #ffffff;
+}
 .layout {
   position: relative;
-  height: 100vh;
+  //height: 100vh;
 
   &.withnavbar {
+    overflow-x: hidden;
     .main {
-      margin-left: 0;
+      margin-left:224px;
+      width: 100%;
     }
     .sider {
-      display: none;
+      display: block;
+      width: 224px;
     }
     &.fold{
-      .main {
-        margin-left:244px;
-        width: 100%;
-      }
       .sider {
-        display: block;
-        width: 244px;
+        margin-left:-224px;
+      }
+      .main {
+        margin-left: 0;
       }
     }
   }
@@ -46,6 +53,7 @@
             .anticon {
               font-size: 14px;
               margin-right: 0;
+              color: #999;
             }
           }
 
@@ -76,17 +84,17 @@
 /*--*/
   .sider {
     width: 224px;
-    background: #3e3e3e;
+    //background: #3e3e3e;
     position: absolute;
     overflow: visible;
-    padding-bottom: 24px;
-    height: 100vh;
+    //padding-bottom: 24px;
+    //height: 100vh;
     transition: @transition-ease-out;
     box-shadow: @shadow-1;
     color: #999;
 
     &.light {
-      background: #fff;
+      //background: #fff;
 
       .switchtheme {
         background: #fff;
@@ -123,8 +131,8 @@
 
     .switchtheme {
       width: 100%;
-      position: absolute;
-      bottom: 0;
+     /* position: absolute;
+      bottom: 0;*/
       height: 48px;
       background-color: @dark-half;
       display: flex;
@@ -155,7 +163,7 @@
       }
 
       .ant-menu-root {
-        height: ~"calc(100vh - 144px)";
+        //height: ~"calc(100vh - 144px)";
         overflow-x: hidden;
         border-right: none;
 
@@ -200,9 +208,9 @@
   .main {
     margin-left: 224px;
     overflow: auto;
-    height: 100vh;
+    //height: 100vh;
     transition: @transition-ease-out;
-
+    background-color:#f8f8f8;
     :global {
       .content-inner {
         background: #fff;
@@ -214,10 +222,11 @@
 
     .container {
       margin: 24px;
+      transition:all 0.1s ease-out;
     }
 
     .content {
-      min-height: e("calc(100vh - 184px)");
+      //min-height: e("calc(100vh - 184px)");
       position: relative;
     }
   }
@@ -225,7 +234,7 @@
 
 :global .ant-menu-dark {
   color: #999;
-  background-color: #3e3e3e;
+  //background-color: #3e3e3e;
 
   .ant-menu-submenu-title:hover,
   .ant-menu-submenu:hover {

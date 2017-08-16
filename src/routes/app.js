@@ -19,8 +19,8 @@ let lastHref
 const App = ({ children, dispatch, app, loading, location }) => {
 
 
-  const { user, siderFold, darkTheme, isNavbar, menuPopoverVisible, navOpenKeys, menu, permissions } = app
-  console.log(siderFold)
+  const { user, siderFold, darkTheme, isNavbar, menuPopoverVisible, navOpenKeys, menu, permissions,contentHeight } = app
+  console.log(app)
   let { pathname } = location
   // startsWith 表示参数字符串是否在源字符串的头部
   pathname = pathname.startsWith('/') ? pathname : `/${pathname}`
@@ -88,7 +88,7 @@ const App = ({ children, dispatch, app, loading, location }) => {
   }
 
     return (
-        <div>
+        <div className={classnames(styles.rootBg,{ [styles.light]: !darkTheme })}>
             <Helmet>
                 <title>ANTD ADMIN</title>
                 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -104,7 +104,7 @@ const App = ({ children, dispatch, app, loading, location }) => {
                     <Header {...headerProps} />
                     <Bread {...breadProps} />
                     <div className={styles.container}>
-                        <div className={styles.content}>
+                        <div className={styles.content} style={{minHeight:contentHeight}}>
                             {hasPermission ? children : <Error />}
                         </div>
                     </div>

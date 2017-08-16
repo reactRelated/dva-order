@@ -10,6 +10,9 @@ import * as menusService from '../services/menus'
 
 const { prefix } = config
 
+const contentHeight=function (ddc) {
+ return ddc-160
+}
 
 export default {
   namespace: 'app',
@@ -41,6 +44,8 @@ export default {
     siderFold: window.localStorage.getItem(`${prefix}siderFold`) === 'true',
     darkTheme: window.localStorage.getItem(`${prefix}darkTheme`) === 'true',
     isNavbar: document.body.clientWidth < 769,
+    // contentHeight: window.screen.height-(47+64+48+48),
+    contentHeight: contentHeight(document.documentElement.clientHeight),
     navOpenKeys: JSON.parse(window.localStorage.getItem(`${prefix}navOpenKeys`)) || [],
   },
   subscriptions: {
@@ -51,6 +56,7 @@ export default {
         clearTimeout(tid)
         tid = setTimeout(() => {
           dispatch({ type: 'changeNavbar' })
+          dispatch({ type: 'monitorContent',payload: contentHeight(document.documentElement.clientHeight)  })
         }, 300)
       }
     },
@@ -114,6 +120,7 @@ export default {
       const isNavbar = document.body.clientWidth < 769
       if (isNavbar !== app.isNavbar) {
         yield put({ type: 'handleNavbar', payload: isNavbar })
+
       }
     },
 
@@ -157,7 +164,12 @@ export default {
         isNavbar: payload,
       }
     },
-
+    monitorContent (state, { payload }) {
+      return {
+        ...state,
+        contentHeight: payload,
+      }
+    },
     handleNavOpenKeys (state, { payload: navOpenKeys }) {
       console.log(state)
       return {
