@@ -1,6 +1,6 @@
 import { Stat } from 'g2';
 import createG2 from 'g2-react';
-function areaChart({data,height,forceFit}) {
+function areaChart({data,width,height,forceFit}) {
 
   const Chart = createG2(chart => {
     chart.col('世界', {
@@ -13,6 +13,7 @@ function areaChart({data,height,forceFit}) {
 
   return ( <Chart
     data={data}
+    width={width}
     height={height}
     forceFit={forceFit} />);
 }

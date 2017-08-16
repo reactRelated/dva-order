@@ -39,6 +39,7 @@ export default modelExtend(model, {
        {country: '大洋洲', year: '2050', value: 460},
      ],
      forceFit: true,
+     width:400,
      height: 400,
    },
     user: {
