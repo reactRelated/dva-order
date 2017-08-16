@@ -39,8 +39,7 @@ export default modelExtend(model, {
        {country: '大洋洲', year: '2050', value: 460},
      ],
      forceFit: true,
-     width: 450,
-     height: 450,
+     height: 400,
    },
     user: {
       avatar: '/avatar.png',
@@ -51,7 +50,6 @@ export default modelExtend(model, {
     },
   },
   subscriptions: {
-
   },
   effects: {
 

@@ -1,6 +1,6 @@
 const qs = require('qs')
 const Mock = require('mockjs')
-const config = require('../utils/config')
+const config = require('../src/utils/config')
 
 const { apiPrefix } = config
 
@@ -15,7 +15,7 @@ const userPermission = {
     role: EnumRoleType.ADMIN,
   },
   DEFAULT: {
-    visit: ['1', '2', '21', '7', '5', '51', '52', '53'],
+    visit: ['1', '2', '21', '5', '51', '52', '53'],
     role: EnumRoleType.DEFAULT,
   },
   DEVELOPER: {

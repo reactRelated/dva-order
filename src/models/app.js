@@ -108,6 +108,7 @@ export default {
       payload,
     }, { call, put }) {
       const data = yield call(logout, parse(payload))
+      console.log(data)
       if (data.success) {
         yield put({ type: 'query' })
       } else {

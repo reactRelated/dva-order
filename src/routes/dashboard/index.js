@@ -4,10 +4,10 @@ import { connect } from 'dva'
 import { Row, Col, Card } from 'antd'
 import { color } from '../../utils'
 import { Loader } from '../../components'
-import {  User } from './components'
+import {  User,AreaChart } from './components'
 import styles from './index.less'
-import createG2 from 'g2-react';
-import { Stat } from 'g2';
+
+
 
 const bodyStyle = {
   bodyStyle: {
@@ -16,19 +16,16 @@ const bodyStyle = {
   },
 }
 
+
+
+
 function Dashboard ({ dashboard, loading }) {
   const { area,user } = dashboard
  /* const numberCards = numbers.map((item, key) => (<Col key={key} lg={6} md={12}>
     <NumberCard {...item} />
   </Col>))*/
-  const Chart = createG2(chart => {
-    chart.col('世界', {
-      type: 'linear',
-      tickInterval: 5
-    });
-    chart.areaStack().position('year*value').color('country');
-    chart.render();
-  });
+ console.log(area)
+
   return (
     <div>
       <Loader spinning={loading.models.dashboard} />
@@ -38,11 +35,7 @@ function Dashboard ({ dashboard, loading }) {
           <Card
             title="数据统计"
             bordered={false} >
-            <Chart
-              data={area.data}
-              width={area.width}
-              height={area.height}
-              forceFit={area.forceFit} />
+            <AreaChart {...area} />
           </Card>
         </Col>
         <Col lg={8} md={24}>

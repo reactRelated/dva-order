@@ -32,7 +32,7 @@ let database = [
   {
     id: '4',
     bpid: '1',
-    name: 'UI Element',
+    name: '游客无权访问',
     icon: 'camera-o',
   },
 /*  {
@@ -123,7 +123,7 @@ let database = [
     id: '61',
     bpid: '6',
     mpid: '6',
-    name: 'Test Navigation1',
+    name: 'Test Navigation1 游客无权访问 ',
     route: '/navigation/navigation1',
   },
   {

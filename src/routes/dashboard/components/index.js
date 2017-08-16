@@ -1,4 +1,5 @@
 
+import AreaChart from './areaChart'
 import User from './user'
 
-export {  User }
+export {  User , AreaChart }
