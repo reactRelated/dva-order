@@ -68,12 +68,16 @@ export default {
       payload,
     }, { call, put }) {
       //请求查询 用户数据
-      const { code, user } = yield call(query, payload)
+      const userc= yield call(query, payload)
+      console.log(userc)
+      const { success, user }=userc
       //请求成功
-      if (code > 0 && user) {
+      if (success && user) {
         //请求菜单
-        const { list } = yield call(menusService.query)
+        const { data } = yield call(menusService.query)
+
         const { permissions } = user
+        let list=data.list
         let menu = list
         if (permissions.role === EnumRoleType.ADMIN || permissions.role === EnumRoleType.DEVELOPER) {
           permissions.visit = list.map(item => item.id)
@@ -99,6 +103,7 @@ export default {
           yield put(routerRedux.push('/dashboard'))
         }
       } else if (config.openPages && config.openPages.indexOf(location.pathname) < 0) {
+        console.log("2$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$")
         let from = location.pathname
         window.location = `${location.origin}/login?from=${from}`
       }

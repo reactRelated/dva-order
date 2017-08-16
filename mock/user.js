@@ -62,7 +62,7 @@ module.exports = {
   },
   [`GET ${apiPrefix}/user/logout`] (req, res) {
     res.clearCookie('token')
-    res.status(200).end()
+    res.status(200).json({code:1,message: 'logout Oks'})
   },
 
   [`GET ${apiPrefix}/user`] (req, res) {

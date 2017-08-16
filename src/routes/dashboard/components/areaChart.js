@@ -5,7 +5,7 @@ function areaChart({data,width,height,forceFit}) {
   const Chart = createG2(chart => {
     chart.col('世界', {
       type: 'linear',
-      tickInterval: 5
+      tickInterval: 25
     });
     chart.areaStack().position('year*value').color('country');
     chart.render();

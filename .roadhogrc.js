@@ -33,9 +33,24 @@ export default {
         [
           "import", {
             "libraryName": "antd",
-            "style": "css"
+            "style": true
           }
         ]
+      ],
+      plugins: [
+        ["module-resolver", {
+          "root": ["/src"],
+          "alias": {
+            "components": "./components",
+            "utils":      "./utils",
+            "config":     "./utils/config",
+            "enums":      "./utils/enums",
+            "services":   "./services",
+            "models":     "./models",
+            "routes":     "./routes",
+            "themes":     "./themes"
+          }
+        }]
       ]
     },
     production: {
@@ -44,7 +59,7 @@ export default {
         [
           "import", {
             "libraryName": "antd",
-            "style": "css"
+            "style": true
           }
         ]
       ]
