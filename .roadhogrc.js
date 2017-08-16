@@ -10,8 +10,8 @@ export default {
   entry : 'src/index.js',
   svgSpriteLoaderDirs : svgSpriteDirs,
   theme : "./theme.config.js",
-  publicPath : `/${version}/`,
-  outputPath : `./dist/${version}`,
+  // publicPath : `/${version}/`,
+  // outputPath : `./dist/${version}`,
   // 接口代理示例
   "proxy": {
     "/api/v1/weather": {
@@ -33,7 +33,7 @@ export default {
         [
           "import", {
             "libraryName": "antd",
-            "style": true
+            "style": "css"
           }
         ]
       ]
@@ -44,7 +44,7 @@ export default {
         [
           "import", {
             "libraryName": "antd",
-            "style": true
+            "style": "css"
           }
         ]
       ]

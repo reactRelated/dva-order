@@ -3,7 +3,7 @@
   "name": "dva-order",
   "version": "0.0.1",
   "scripts": {
-    "start": "roadhog server",
+    "start": "set BROWSER=none&&roadhog server",
     "build": "roadhog build",
     "lint": "eslint --ext .js src test",
     "precommit": "npm run lint"

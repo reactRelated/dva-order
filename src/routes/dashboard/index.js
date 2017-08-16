@@ -47,8 +47,8 @@ function Dashboard ({ dashboard, loading }) {
         </Col>
         <Col lg={8} md={24}>
           <Card
-            bordered={false} >
-            <User {...user}   bodyStyle={{ ...bodyStyle.bodyStyle, padding: 0 }}/>
+            bordered={false}  bodyStyle={{ ...bodyStyle.bodyStyle, padding: 0 }}>
+            <User {...user}  />
           </Card>
         </Col>
       </Row>
