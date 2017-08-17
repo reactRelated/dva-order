@@ -35,7 +35,14 @@ export default {
             "libraryName": "antd",
             "style": true
           }
-        ]
+        ],
+        ["module-resolver", {
+          "root": ["./src"],
+          "alias": {
+            "themes":"./themes",
+            "utils": "./utils",
+          }
+        }]
       ],
       plugins: [
         ["module-resolver", {
