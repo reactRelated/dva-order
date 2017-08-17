@@ -14,7 +14,8 @@
         "services":   "./services",
         "models":     "./models",
         "routes":     "./routes",
-        "themes":     "./themes"
+        "themes":     "./themes",
+        "underscore": "lodash"
       }
     }]
   ]
