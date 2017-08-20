@@ -7,6 +7,7 @@ import { YQL, CORS } from './config'
 /*拦截*/
 const successStatus = 1;
 const errorStatus = [-1,101];
+
 axios.interceptors.response.use(function (response) {
   console.log(response)
 
@@ -65,24 +66,26 @@ const request = (options) => {
 
   const cloneData = lodash.cloneDeep(data)
 
-
+  let instance = axios.create({
+    headers: {'x-csrf-token': '3R0LqUeKNR9N3rsJ1rpahdyt'}
+  });
   switch (method.toLowerCase()) {
     case 'get':
-      return axios.get(url, {
+      return instance.get(url, {
         params: cloneData,
       })
     case 'delete':
-      return axios.delete(url, {
+      return instance.delete(url, {
         data: cloneData,
       })
     case 'post':
-      return axios.post(url, cloneData)
+      return instance.post(url, cloneData)
     case 'put':
-      return axios.put(url, cloneData)
+      return instance.put(url, cloneData)
     case 'patch':
-      return axios.patch(url, cloneData)
+      return instance.patch(url, cloneData)
     default:
-      return axios(options)
+      return instance(options)
   }
 }
 
