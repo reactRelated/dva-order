@@ -39,8 +39,8 @@ export default {
         ["module-resolver", {
           "root": ["./src"],
           "alias": {
-            "themes":"./themes",
             "utils": "./utils",
+            "dva": "dva-react-router-3"
           }
         }]
       ],
@@ -48,14 +48,7 @@ export default {
         ["module-resolver", {
           "root": ["/src"],
           "alias": {
-            "components": "./components",
-            "utils":      "./utils",
-            "config":     "./utils/config",
-            "enums":      "./utils/enums",
-            "services":   "./services",
-            "models":     "./models",
-            "routes":     "./routes",
-            "themes":     "./themes"
+            "utils":      "./utils"
           }
         }]
       ]
